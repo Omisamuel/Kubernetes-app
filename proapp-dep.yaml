@@ -26,4 +26,8 @@ spec:
           command: [ 'sh', '-c', "until nslookup prodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for prodb; sleep 2; done" ]
         - name: memcache
           image: busybox
+<<<<<<< HEAD
           command: [ 'sh', '-c', "until nslookup prormq.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for prormq; sleep 2; done" ]
+=======
+          command: [ 'sh', '-c', "until nslookup promemcached.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for promc; sleep 2; done" ]
+>>>>>>> 4bd6e0b (proapp deployment)
