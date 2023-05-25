@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: promc
+  name: prormq
 spec:
   selector:
     matchLabels:
-      app: promc
+      app: prormq
   replicas: 1
   template:
     metadata:
       labels:
-        app: promc
+        app: prormq
     spec:
       containers:
-        - name: promc
+        - name: prormq
           image: rabbitmq
           ports:
-            - name: promc-port
+            - name: prormq-port
               containerPort: 15672
           env:
             - name: RABBITMQ_DEFAULT_PASS
