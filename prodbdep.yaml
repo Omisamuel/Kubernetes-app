@@ -21,7 +21,7 @@ spec:
             - "--ignore-db-dir=lost+found"
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: pro-db-data
+              name: vpro-db-data
           ports:
             - name: prodb-port
               containerPort: 3306
@@ -34,7 +34,7 @@ spec:
       nodeSelector:
         zone: us-east-2a
       volumes:
-        - name: pro-db-data
+        - name: vpro-db-data
           # This AWS EBS volume must already exist.
           awsElasticBlockStore:
             volumeID: vol-0fe9e8f64a1a031ba
