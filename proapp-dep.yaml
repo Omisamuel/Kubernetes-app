@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proapp
+  labels:
+    app: proapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proapp
+  template:
+    metadata:
+      labels:
+        app: proapp
+    spec:
+      containers:
+        - name: proapp
+          image: vprofomis/vprofileapp:V1
+          ports:
+            - name: proapp-port
+              containerPort: 8080
+      initContainers:
+        - name: mydb
+          image: busybox
+          command: [ 'sh', '-c', "until nslookup prodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for prodb; sleep 2; done" ]
+        - name: memcache
+          image: busybox
+          command: [ 'sh', '-c', "until nslookup prormq.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for prormq; sleep 2; done" ]
