@@ -37,5 +37,5 @@ spec:
         - name: pro-db-data
           # This AWS EBS volume must already exist.
           awsElasticBlockStore:
-            volumeID: vol-0f622c0295488c484
+            volumeID: vol-0fe9e8f64a1a031ba
             fsType: ext4
