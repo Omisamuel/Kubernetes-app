@@ -27,4 +27,3 @@ spec:
         - name: memcache
           image: busybox
           command: [ 'sh', '-c', "until nslookup promemcached.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for promc; sleep 2; done" ]
-
